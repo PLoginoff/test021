@@ -1,5 +1,5 @@
+// by PLoginoff
 // TODO
-// * add error output
 //
 
 package main
@@ -11,15 +11,6 @@ import (
 	"strconv"
 )
 
-func count_bits(number uint64) uint64 {
-	var count uint64
-	for number > 0 {
-		count += number & 1
-		number >>= 1
-	}
-	return count
-}
-
 func main() {
 	var cells, chips, start, end, i, result, count uint64
 	var err error
@@ -27,7 +18,7 @@ func main() {
 	if len(os.Args) != 3 {
 		fmt.Println("Please type 2 args... For example:")
 		fmt.Println("  go run roulette.go 5 3 | head")
-		return // fixme
+		os.Exit(1)
 	}
 
 	cells, err = strconv.ParseUint(os.Args[1], 10, 64)
@@ -35,22 +26,22 @@ func main() {
 
 	if err != nil {
 		fmt.Println("Input error...")
-		return
+		os.Exit(1)
 	}
 
 	if cells < 3 || cells > 63 {
 		fmt.Println("Please input cells from 3 to 63")
-		return // fixme
+		os.Exit(1)
 	}
 
 	if chips < 3 || chips > 63 {
 		fmt.Println("Please input chips from 3 to 36")
-		return // fixme
+		os.Exit(1)
 	}
 
 	if chips >= cells {
 		fmt.Println("Please input chips < cells")
-		return // fixme
+		os.Exit(1)
 	}
 
 	count = count_combinations(cells, chips)
@@ -58,7 +49,7 @@ func main() {
 
 	if count < 10 {
 		fmt.Println("Less 10 results... error")
-		return // fixme
+		os.Exit(1)
 	}
 
 	start = 1<<chips - 1
@@ -72,7 +63,17 @@ func main() {
 	}
 
 	// fmt.Println(result)
+	os.Exit(0)
+}
 
+// calc "1" in number
+func count_bits(number uint64) uint64 {
+	var count uint64
+	for number > 0 {
+		count += number & 1
+		number >>= 1
+	}
+	return count
 }
 
 // Very very big numbers
