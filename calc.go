@@ -12,7 +12,7 @@ func main() {
 	start = 1<<second - 1
 	max = (1<<first - 1) &^ (1<<(first-second) - 1)
 
-	fmt.Printf("%b\n", start)
+	fmt.Printf("%0[2]*[1]b\n", start, first)
 	fmt.Printf("%b\n", max)
 
 	for i = start; i <= max; i++ {
