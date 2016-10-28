@@ -16,3 +16,5 @@ Combinations: 9075135300
 000000000000000001110111111111111111
 ```
 
+And we need ~350G for saving it...
+
