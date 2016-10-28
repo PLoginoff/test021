@@ -34,15 +34,16 @@ func main() {
 	chips, err = strconv.ParseUint(os.Args[2], 10, 64)
 
 	if err != nil {
-		// fixme...
+		fmt.Println("Input error...")
+		return
 	}
 
-	if cells < 3 && cells > 63 {
+	if cells < 3 || cells > 63 {
 		fmt.Println("Please input cells from 3 to 63")
 		return // fixme
 	}
 
-	if chips < 3 && chips > 63 {
+	if chips < 3 || chips > 63 {
 		fmt.Println("Please input chips from 3 to 36")
 		return // fixme
 	}
