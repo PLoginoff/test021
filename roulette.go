@@ -35,7 +35,7 @@ func main() {
 	}
 
 	if chips < 3 || chips > 63 {
-		fmt.Println("Please input chips from 3 to 36")
+		fmt.Println("Please input chips from 3 to 63")
 		os.Exit(1)
 	}
 
